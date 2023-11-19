@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lumi/components/expense_summary.dart';
 import 'package:lumi/components/expense_tile.dart';
 import 'package:lumi/data/expense_data.dart';
 import 'package:lumi/models/expense_item.dart';
 import 'package:provider/provider.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,8 +17,15 @@ class _HomePageState extends State<HomePage> {
 
   //text controllers
   final newExpenseNameController = TextEditingController();
-  final newExpenseAmountController = TextEditingController();
+  final newExpenseDollarController = TextEditingController();
+  final newExpenseCentsController = TextEditingController();
 
+  @override
+  void initState() {
+    super.initState();
+    //prepare data
+    Provider.of<ExpenseData>(context, listen: false).prepareData();
+  }
   //add new expense
   void addNewExpense() {
     //a
@@ -30,11 +39,36 @@ class _HomePageState extends State<HomePage> {
             //expense name
             TextField(
               controller: newExpenseNameController,
+              decoration: const InputDecoration(
+                hintText: 'Expense name',
+              )
             ),
 
             //expense amount
-            TextField(
-              controller: newExpenseAmountController,
+
+            Row( 
+              children: [
+                //dollars
+                Expanded(
+                  child: TextField(
+                    controller: newExpenseDollarController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                hintText: 'Dollars',
+              )
+                  ),
+                ),
+                //Cents
+                Expanded(
+                  child: TextField(
+                    controller: newExpenseCentsController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                hintText: 'Cents',
+              )
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -56,18 +90,31 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //delete expense
+  void deleteExpense(ExpenseItem expense) {
+    Provider.of<ExpenseData>(context, listen: false).deleteExpense(expense);
+  }
+
+
   //save method
   void save() {
-    //create expense item
-    ExpenseItem newExpense = ExpenseItem(
-      name: newExpenseNameController.text,
-      amount: newExpenseAmountController.text,
-      dateTime: DateTime.now(),
-    );
+    //only savev if all fields are filled
+    if (newExpenseNameController.text.isNotEmpty && 
+        newExpenseDollarController.text.isNotEmpty &&
+        newExpenseCentsController.text.isNotEmpty) {
+        
+        //put dollars and cents together
+        String amount = '${newExpenseDollarController.text}.${newExpenseCentsController.text}';
+        //create expense item
+        ExpenseItem newExpense = ExpenseItem(
+          name: newExpenseNameController.text,
+          amount: amount,
+          dateTime: DateTime.now(),
+        );
 
-    //add the new expense
-    Provider.of<ExpenseData>(context, listen: false).addNewExpense(newExpense);
-
+        //add the new expense
+        Provider.of<ExpenseData>(context, listen: false).addNewExpense(newExpense);
+    }
     Navigator.pop(context);
     clear();
   }
@@ -80,7 +127,8 @@ class _HomePageState extends State<HomePage> {
 
   void clear() {
     newExpenseNameController.clear();
-    newExpenseAmountController.clear();
+    newExpenseDollarController.clear();
+    newExpenseCentsController.clear();
   }
 
   @override
@@ -90,13 +138,16 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.grey[300],
         floatingActionButton: FloatingActionButton(
           onPressed: addNewExpense,
+          backgroundColor: Colors.black,
           child: Icon(Icons.add),
         ),
 
         //display expenses back in a list
         body: ListView(children: [
             //weekly summary
-
+            ExpenseSummary(startOfWeek: value.startOfWeekDate()),
+            
+            const SizedBox(height: 20),
 
             //expense list
             ListView.builder(
@@ -107,6 +158,8 @@ class _HomePageState extends State<HomePage> {
                 name: value.getAllExpenseList()[index].name,
                 amount: value.getAllExpenseList()[index].amount,
                 dateTime: value.getAllExpenseList()[index].dateTime,   
+                deleteTapped: (p0) => 
+                  deleteExpense(value.getAllExpenseList()[index]),
               ),
             ),
         ]),
