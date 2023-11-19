@@ -135,10 +135,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<ExpenseData> (
       builder:  (context, value, child) => Scaffold(
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Color.fromARGB(255, 248, 255, 198),
         floatingActionButton: FloatingActionButton(
           onPressed: addNewExpense,
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromARGB(255, 13, 64, 8),
           child: Icon(Icons.add),
         ),
 

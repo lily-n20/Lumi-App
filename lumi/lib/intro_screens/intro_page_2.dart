@@ -13,7 +13,7 @@ class IntroPage2 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center, // Center the column
             children: <Widget>[
               const Text(
-                'L U M I', // Replace with your desired text
+                'It can be hard to see how quickly your purchases add up..', // Replace with your desired text
                 style: TextStyle(
                   fontSize: 24, // Optional: Adjust the font size
                   fontWeight: FontWeight.bold, // Optional: Adjust the font weight

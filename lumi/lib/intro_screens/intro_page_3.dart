@@ -5,7 +5,7 @@ class IntroPage3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.deepPurple[100],
+      color: Colors.green[100],
       child: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Center(
@@ -13,7 +13,7 @@ class IntroPage3 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center, // Center the column
             children: <Widget>[
               const Text(
-                'L U M I', // Replace with your desired text
+                'Track your expenses here! And before you swipe, make sure you got funds :) ', // Replace with your desired text
                 style: TextStyle(
                   fontSize: 24, // Optional: Adjust the font size
                   fontWeight: FontWeight.bold, // Optional: Adjust the font weight

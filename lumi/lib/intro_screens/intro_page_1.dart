@@ -19,7 +19,11 @@ class IntroPage1 extends StatelessWidget {
                   fontWeight: FontWeight.bold, // Optional: Adjust the font weight
                   color: Colors.black, // Optional: Adjust the text color
                 ),
-              ),
+              ), 
+              const SizedBox(height: 10),
+              const Text('Where is your money going?'),
+               // Optional: Add space between text and Lottie asset
+
               const SizedBox(height: 70), // Optional: Add space between text and Lottie asset
               Lottie.asset('lib/assets/ghibli2.json'),
             ],
