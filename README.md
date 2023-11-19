@@ -20,8 +20,11 @@ LUMI is a expense tracker app built using Flutter. It helps users make better in
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
+![Screenshot 1](lumi1.png)
+![Screenshot 2](lumi2.png)
+![Screenshot 3](lumi3.png)
+![Screenshot 4](lumi4.png)
+![Screenshot 5](lumi5.png)
 
 ## Installation
 
