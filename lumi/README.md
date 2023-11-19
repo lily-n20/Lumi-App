@@ -1,16 +1,35 @@
-# lumi
+# LUMI Expense Tracker App
 
-A new Flutter project.
+LUMI is a expense tracker app built using Flutter. It helps users make better informed spending decisions based on past spending habit. 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Table of Contents
 
-A few resources to get you started if this is your first Flutter project:
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+
+- **Expense Tracking:** Weekly record of your purchases
+- **Data Visualization:** View graphical representations of your spending patterns through charts and graphs.
+
+
+## Screenshots
+
+![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 2](screenshots/screenshot2.png)
+
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/lumi-expense-tracker.git
+   cd lumi-expense-tracker
+
+Install dependencies:
+    flutter pub get
+
+Run the app:    
+    flutter run
