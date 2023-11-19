@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import 'data/expense_data.dart';
+import 'pages/onboarding_screen.dart';
 
 void main() async{
   //initialize hive
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       create: (context) => ExpenseData(),
       builder: (context, child) => const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        home: OnBoardingScreen(),
+        //HomePage(),
       )  
     );
   }
